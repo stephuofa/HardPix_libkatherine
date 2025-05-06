@@ -9,7 +9,7 @@
 
 #include <katherine/katherine.h>
 
-static const char *remote_addr = "192.168.1.145";
+static const char *remote_addr = "192.168.1.157";
 typedef katherine_px_f_toa_tot_t px_t;
 
 void
@@ -37,22 +37,22 @@ configure(katherine_config_t *config)
     config->phase                   = PHASE_1;
     config->freq                    = FREQ_40;
 
-    config->dacs.named.Ibias_Preamp_ON       = 128;
+    config->dacs.named.Ibias_Preamp_ON       = 32;
     config->dacs.named.Ibias_Preamp_OFF      = 8;
     config->dacs.named.VPReamp_NCAS          = 128;
     config->dacs.named.Ibias_Ikrum           = 15;
     config->dacs.named.Vfbk                  = 164;
-    config->dacs.named.Vthreshold_fine       = 476;
-    config->dacs.named.Vthreshold_coarse     = 8;
-    config->dacs.named.Ibias_DiscS1_ON       = 100;
+    config->dacs.named.Vthreshold_fine       = 378;
+    config->dacs.named.Vthreshold_coarse     = 7;
+    config->dacs.named.Ibias_DiscS1_ON       = 32;
     config->dacs.named.Ibias_DiscS1_OFF      = 8;
-    config->dacs.named.Ibias_DiscS2_ON       = 128;
+    config->dacs.named.Ibias_DiscS2_ON       = 32;
     config->dacs.named.Ibias_DiscS2_OFF      = 8;
-    config->dacs.named.Ibias_PixelDAC        = 128;
+    config->dacs.named.Ibias_PixelDAC        = 60;
     config->dacs.named.Ibias_TPbufferIn      = 128;
     config->dacs.named.Ibias_TPbufferOut     = 128;
-    config->dacs.named.VTP_coarse            = 128;
-    config->dacs.named.VTP_fine              = 256;
+    config->dacs.named.VTP_coarse            = 0;
+    config->dacs.named.VTP_fine              = 0;
     config->dacs.named.Ibias_CP_PLL          = 128;
     config->dacs.named.PLL_Vcntrl            = 128;
 
