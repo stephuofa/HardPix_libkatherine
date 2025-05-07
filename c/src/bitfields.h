@@ -57,7 +57,7 @@
  *   3. _BITS_md_header_type.
  */
 
-#define MASK(n)                             ((1ul << (n)) - 1)
+#define MASK(n)                             (((uint64_t) 1 << (n)) - 1)
 #define EXTRACT(val, bitfield, name)        ((_BITS_##bitfield##_##name##_type) (((val) >> (_BITS_##bitfield##_##name##_start)) & _BITS_##bitfield##_##name##_mask))
 
 #endif
