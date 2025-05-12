@@ -56,12 +56,13 @@ configure(katherine_config_t *config)
     config->dacs.named.Ibias_CP_PLL          = 128;
     config->dacs.named.PLL_Vcntrl            = 128;
 
-    int res = katherine_px_config_load_bmc_file(&config->pixel_config, "chipconfig.bmc");
-    if (res != 0) {
-        printf("Cannot load pixel configuration. Does the file exist?\n");
-        printf("Reason: %s\n", strerror(res));
-        exit(1);
-    }
+    printf("WARNING: No Pixel Config");
+    // int res = katherine_px_config_load_bmc_file(&config->pixel_config, "chipconfig.bmc");
+    // if (res != 0) {
+    //     printf("Cannot load pixel configuration. Does the file exist?\n");
+    //     printf("Reason: %s\n", strerror(res));
+    //     exit(1);
+    // }
 }
 
 static uint64_t n_hits;
@@ -80,14 +81,14 @@ frame_ended(void *user_ctx, int frame_idx, bool completed, const katherine_frame
 {
     const double recv_perc = 100. * info->received_pixels / info->sent_pixels;
 
-    printf("\n");
-    printf("Ended frame %d.\n", frame_idx);
-    printf(" - tpx3->katherine lost %llu pixels\n", info->lost_pixels);
-    printf(" - katherine->pc sent %llu pixels\n", info->sent_pixels);
-    printf(" - katherine->pc received %llu pixels\n", info->received_pixels);
-    printf(" - state: %s\n", (completed ? "completed" : "not completed"));
-    printf(" - start time: %llu\n", info->start_time.d);
-    printf(" - end time: %llu\n", info->end_time.d);
+    // printf("\n");
+    // printf("Ended frame %d.\n", frame_idx);
+    // printf(" - tpx3->katherine lost %llu pixels\n", info->lost_pixels);
+    // printf(" - katherine->pc sent %llu pixels\n", info->sent_pixels);
+    // printf(" - katherine->pc received %llu pixels\n", info->received_pixels);
+    // printf(" - state: %s\n", (completed ? "completed" : "not completed"));
+    // printf(" - start time: %llu\n", info->start_time.d);
+    // printf(" - end time: %llu\n", info->end_time.d);
 }
 
 void
@@ -148,6 +149,7 @@ run_acquisition(katherine_device_t *dev, const katherine_config_t *c)
         printf("Reason: %s\n", strerror(res));
         exit(5);
     }
+    katherine_acquisition_stop(&acq);
     time_t toc = time(NULL);
 
     double duration = difftime(toc, tic);;
