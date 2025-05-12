@@ -7,16 +7,18 @@
 #include <time.h>       // time, difftime
 #include <string.h>     // strerror
 
-#include <katherine/katherine.h>
+#include "katherine/katherine.h"
 
 static const char *remote_addr = "192.168.1.157";
 typedef katherine_px_f_toa_tot_t px_t;
+
+FILE * fp;
 
 void
 configure(katherine_config_t *config)
 {
     // For now, these constants are hard-coded.
-    // This configuration will produce meaningful results only for: K7-W0005
+    // This configuration will produce meaningful results only for: K2-W0054
     config->bias_id                 = 0;
     config->acq_time                = 10e9; // ns
     config->no_frames               = 1;
@@ -56,7 +58,7 @@ configure(katherine_config_t *config)
     config->dacs.named.Ibias_CP_PLL          = 128;
     config->dacs.named.PLL_Vcntrl            = 128;
 
-    printf("WARNING: No Pixel Config");
+    printf("WARNING: No Pixel Config\n");
     // int res = katherine_px_config_load_bmc_file(&config->pixel_config, "chipconfig.bmc");
     // if (res != 0) {
     //     printf("Cannot load pixel configuration. Does the file exist?\n");
@@ -72,8 +74,8 @@ frame_started(void *user_ctx, int frame_idx)
 {
     n_hits = 0;
 
-    printf("Started frame %d.\n", frame_idx);
-    printf("X\tY\tToA\tfToA\tToT\n");
+    fprintf(fp,"Started frame %d.\n", frame_idx);
+    fprintf(fp,"X\tY\tToA\tfToA\tToT\n");
 }
 
 void
@@ -98,7 +100,7 @@ pixels_received(void *user_ctx, const void *px, size_t count)
 
     const px_t *dpx = (const px_t *) px;
     for (size_t i = 0; i < count; ++i) {
-        printf("%d\t%d\t%llu\t%d\t%d\n", dpx[i].coord.x, dpx[i].coord.y, dpx[i].toa, dpx[i].ftoa, dpx[i].tot);
+        fprintf(fp,"%d\t%d\t%llu\t%d\t%d\n", dpx[i].coord.x, dpx[i].coord.y, dpx[i].toa, dpx[i].ftoa, dpx[i].tot);
     }
 }
 
@@ -139,7 +141,6 @@ run_acquisition(katherine_device_t *dev, const katherine_config_t *c)
         printf("Reason: %s\n", strerror(res));
         exit(4);
     }
-
     printf("Acquisition started.\n");
 
     time_t tic = time(NULL);
@@ -182,8 +183,19 @@ main(int argc, char *argv[])
     }
 
     print_chip_id(&device);
+
+    char filename[64];
+    snprintf(filename,sizeof(filename),"HardPix_%ld.txt",(long)time(NULL));
+    fp = fopen(filename,"w");
+    if (fp == NULL){
+        perror("Error creating output file.");
+        exit(1);
+    }
+
     run_acquisition(&device, &c);
 
     katherine_device_fini(&device);
+
+    fclose(fp);
     return 0;
 }
