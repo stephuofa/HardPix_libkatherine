@@ -20,7 +20,7 @@ configure(katherine_config_t *config)
     // For now, these constants are hard-coded.
     // This configuration will produce meaningful results only for: K2-W0054
     config->bias_id                 = 0;
-    config->acq_time                = 10e9; // ns
+    config->acq_time                = 20e9; // ns
     config->no_frames               = 1;
     config->bias                    = 230; // V
 
@@ -111,7 +111,7 @@ print_chip_id(katherine_device_t *device)
     int res = katherine_get_chip_id(device, chip_id);
     if (res != 0) {
         printf("Cannot get chip ID. Is Timepix3 connected to the readout?\n");
-        printf("Reason: %s\n", strerror(res));
+        printf("Reason: %i\n", res);
         exit(2);
     }
 
@@ -150,7 +150,14 @@ run_acquisition(katherine_device_t *dev, const katherine_config_t *c)
         printf("Reason: %s\n", strerror(res));
         exit(5);
     }
-    katherine_acquisition_stop(&acq);
+    
+    // res = katherine_acquisition_stop(&acq);
+    if (res != 0){
+        printf("Error stopping acquisition.\n");
+        printf("Reason: %s\n", strerror(res));
+        exit(5);
+    }
+
     time_t toc = time(NULL);
 
     double duration = difftime(toc, tic);;
@@ -185,7 +192,7 @@ main(int argc, char *argv[])
     print_chip_id(&device);
 
     char filename[64];
-    snprintf(filename,sizeof(filename),"HardPix_%ld.txt",(long)time(NULL));
+    snprintf(filename,sizeof(filename),"output/HardPix_%ld.txt",(long)time(NULL));
     fp = fopen(filename,"w");
     if (fp == NULL){
         perror("Error creating output file.");
@@ -194,6 +201,7 @@ main(int argc, char *argv[])
 
     run_acquisition(&device, &c);
 
+    Sleep(3000);
     katherine_device_fini(&device);
 
     fclose(fp);

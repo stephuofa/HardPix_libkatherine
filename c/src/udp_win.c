@@ -56,12 +56,15 @@ katherine_udp_init(katherine_udp_t *u, uint16_t local_port, const char *remote_a
 
     // Create communication buffer.
     if ((res = WSAStartup(MAKEWORD(2, 2), &u->wsa_data)) != 0) {
+        printf("Cant startup\n");
+        res = WSAGetLastError();
         goto err_wsa_data;
     }
 
     // Create socket.
     if ((u->sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == INVALID_SOCKET) {
         res = WSAGetLastError();
+          printf("Cant create sock\n");
         goto err_socket;
     }
 
@@ -72,6 +75,7 @@ katherine_udp_init(katherine_udp_t *u, uint16_t local_port, const char *remote_a
 
     if (bind(u->sock, (const struct sockaddr*) &u->addr_local, sizeof(u->addr_local)) == SOCKET_ERROR) {
         res = WSAGetLastError();
+          printf("Cant bind: %i\n",res);
         goto err_bind;
     }
 
@@ -80,6 +84,7 @@ katherine_udp_init(katherine_udp_t *u, uint16_t local_port, const char *remote_a
         DWORD timeout = timeout_ms;
         if (setsockopt(u->sock, SOL_SOCKET, SO_RCVTIMEO, (char*) &timeout, sizeof(timeout)) == SOCKET_ERROR) {
             res = WSAGetLastError();
+              printf("Cant set sock opt\n");
             goto err_timeout;
         }
     }
@@ -89,11 +94,13 @@ katherine_udp_init(katherine_udp_t *u, uint16_t local_port, const char *remote_a
     u->addr_remote.sin_port = htons(remote_port);
     if (inet_pton(AF_INET, remote_addr, &u->addr_remote.sin_addr) <= 0) {
         res = WSAGetLastError();
+          printf("Cant set remote\n");
         goto err_remote;
     }
 
     if ((u->mutex = CreateMutex(NULL, FALSE, NULL)) == NULL) {
         res = GetLastError();
+          printf("Cant create mutex\n");
         goto err_mutex;
     }
 
@@ -118,9 +125,20 @@ void
 katherine_udp_fini(katherine_udp_t *u)
 {
     // Ignoring return codes below.
-    (void) closesocket(u->sock);
-    (void) CloseHandle(u->mutex);
-    (void) WSACleanup();
+    int res =  closesocket(u->sock);
+    if (res!=0){
+        printf("Error closing socket %s\n",WSAGetLastError());
+    }
+
+    boolean x = CloseHandle(u->mutex);
+    if (x==0){
+        printf("Error closing handle: %s\n",GetLastError());
+    }
+
+    int res2 = WSACleanup();
+     if (res!=0){
+        printf("Error during WSA Cleanup: %s\n",WSAGetLastError());
+    }
 }
 
 /**

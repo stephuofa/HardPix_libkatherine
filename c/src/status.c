@@ -89,7 +89,7 @@ katherine_get_chip_id(katherine_device_t *device, char *s_chip_id)
     if (res) goto err;
 
     char crd[8];
-    res = katherine_cmd_wait_ack_crd(&device->control_socket, crd);
+    res = katherine_cmd_wait_ack_crd(&device->control_socket, crd); // This is where we timeout on a second run of krun
     if (res) goto err;
 
     int chip_id = *(int*) crd;
