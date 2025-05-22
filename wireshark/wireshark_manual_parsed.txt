@@ -1,0 +1,457 @@
+Packet #35
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 00 00 00 00 00 00 0b 00
+	CMD: 0x0b
+--------------------------------------------------
+Packet #36
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 2a 36 00 00 00 00 0b 00
+	CMD: 0x0b
+--------------------------------------------------
+Packet #37
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 00 00 00 00 00 00 12 00
+	CMD: 0x12
+--------------------------------------------------
+Packet #102
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 12 00
+	CMD: 0x12
+--------------------------------------------------
+Packet #103
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 05 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x05
+--------------------------------------------------
+Packet #104
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x00
+--------------------------------------------------
+Packet #105
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 09 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x09
+--------------------------------------------------
+Packet #106
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x00
+--------------------------------------------------
+Packet #107
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 00 ca 9a 3b 00 00 01 00
+	CMD: 0x01
+--------------------------------------------------
+Packet #108
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 01 00
+	CMD: 0x01
+--------------------------------------------------
+Packet #109
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 00 00 00 00 00 00 0a 00
+	CMD: 0x0a
+--------------------------------------------------
+Packet #110
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 0a 00
+	CMD: 0x0a
+--------------------------------------------------
+Packet #111
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 01 00 00 00 00 00 13 00
+	CMD: 0x13
+--------------------------------------------------
+Packet #112
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 13 00
+	CMD: 0x13
+--------------------------------------------------
+Packet #113
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 00 00 80 3f 00 00 02 00
+	CMD: 0x02
+--------------------------------------------------
+Packet #114
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 02 00
+	CMD: 0x02
+--------------------------------------------------
+Packet #115
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 00 00 00 00 05 00 21 00
+	CMD: 0x21
+--------------------------------------------------
+Packet #116
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 21 00
+	CMD: 0x21
+--------------------------------------------------
+Packet #117
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 58 00 00 00 04 00 08 00
+	CMD: 0x08
+--------------------------------------------------
+Packet #118
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 08 00
+	CMD: 0x08
+--------------------------------------------------
+Packet #119
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 1e 28 00 00 03 00 08 00
+	CMD: 0x08
+--------------------------------------------------
+Packet #120
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 08 00
+	CMD: 0x08
+--------------------------------------------------
+Packet #121
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 0e 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x0e
+--------------------------------------------------
+Packet #122
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x00
+--------------------------------------------------
+Packet #123
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 00 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x00
+--------------------------------------------------
+Packet #124
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x00
+--------------------------------------------------
+Packet #125
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 04 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x04
+--------------------------------------------------
+Packet #126
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x00
+--------------------------------------------------
+Packet #127
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 20 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #128
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #129
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 08 00 00 00 01 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #130
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #131
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 80 00 00 00 02 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #132
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #133
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 0f 00 00 00 03 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #134
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #135
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): a4 00 00 00 04 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #136
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #137
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 7a 01 00 00 05 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #138
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #139
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 07 00 00 00 06 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #140
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #141
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 20 00 00 00 07 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #142
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #143
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 08 00 00 00 08 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #144
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #145
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 20 00 00 00 09 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #146
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #147
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 08 00 00 00 0a 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #148
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #149
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 3c 00 00 00 0b 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #150
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #151
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 80 00 00 00 0c 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #152
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #153
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 80 00 00 00 0d 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #154
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #155
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 00 00 00 00 0e 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #156
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #157
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 00 00 00 00 0f 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #158
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #159
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 80 00 00 00 10 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #160
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #161
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 80 00 00 00 11 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #162
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 04 00
+	CMD: 0x04
+--------------------------------------------------
+Packet #163
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 01 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x01
+--------------------------------------------------
+Packet #164
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 07 00
+	CMD: 0x07
+	subCmd: 0x00
+--------------------------------------------------
+Packet #165
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 01 00 00 00 00 00 05 00
+	CMD: 0x05
+--------------------------------------------------
+Packet #166
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 80 00 00 00 00 00 09 00
+	CMD: 0x09
+--------------------------------------------------
+Packet #167
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 05 00
+	CMD: 0x05
+--------------------------------------------------
+Packet #168
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 00 09 00
+	CMD: 0x09
+--------------------------------------------------
+Packet #169
+Source: 192.168.1.3, Destination: 192.168.1.157
+Length: 50
+Payload (hex): 01 00 00 00 00 00 03 00
+	CMD: 0x03
+--------------------------------------------------
+Packet #170
+Source: 192.168.1.157, Destination: 192.168.1.3
+Length: 60
+Payload (hex): 00 00 00 00 00 70 03 00
+	CMD: 0x03
+--------------------------------------------------
+CMD: 0x0b (Echo Chip ID                       ) -     1 usages
+CMD: 0x12 (Sett All Pixel Config              ) -     1 usages
+CMD: 0x07 (HW Command Start                   ) -     6 usages
+CMD: 0x01 (Acquisition Time Setting - LSB     ) -     1 usages
+CMD: 0x0a (Acquisition Time Setting - MSB     ) -     1 usages
+CMD: 0x13 (Number of Frames Setting           ) -     1 usages
+CMD: 0x02 (Bias Setting                       ) -     1 usages
+CMD: 0x21 (Acquisition Setup                  ) -     1 usages
+CMD: 0x08 (Sensor Register Setting            ) -     2 usages
+CMD: 0x04 (Internal DAC Settings              ) -    18 usages
+CMD: 0x05 (Seq. Readout Start                 ) -     1 usages
+CMD: 0x09 (Acquisition Mode Setting           ) -     1 usages
+CMD: 0x03 (Acquisition Start                  ) -     1 usages
