@@ -127,17 +127,17 @@ katherine_udp_fini(katherine_udp_t *u)
     // Ignoring return codes below.
     int res =  closesocket(u->sock);
     if (res!=0){
-        printf("Error closing socket %s\n",WSAGetLastError());
+        printf("Error closing socket %#x\n",WSAGetLastError());
     }
 
     boolean x = CloseHandle(u->mutex);
     if (x==0){
-        printf("Error closing handle: %s\n",GetLastError());
+        printf("Error closing handle: %#x\n",GetLastError());
     }
 
     int res2 = WSACleanup();
      if (res!=0){
-        printf("Error during WSA Cleanup: %s\n",WSAGetLastError());
+        printf("Error during WSA Cleanup: %#x\n",WSAGetLastError());
     }
 }
 

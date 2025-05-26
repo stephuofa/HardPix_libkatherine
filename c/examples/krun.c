@@ -20,12 +20,11 @@ configure(katherine_config_t *config)
     // For now, these constants are hard-coded.
     // This configuration will produce meaningful results only for: K2-W0054
     config->bias_id                 = 0;
-    config->acq_time                = 20e9; // ns
+    config->acq_time                = 10e9; // ns 
     config->no_frames               = 1;
-    config->bias                    = 230; // V
+    config->bias                    = 0; // V
 
     config->delayed_start           = false;
-
     config->start_trigger.enabled           = false;
     config->start_trigger.channel           = 0;
     config->start_trigger.use_falling_edge  = false;
@@ -34,11 +33,13 @@ configure(katherine_config_t *config)
     config->stop_trigger.use_falling_edge   = false;
 
     config->gray_disable            = false;
-    config->polarity_holes          = false;
+    config->polarity_holes          = true;
 
     config->phase                   = PHASE_1;
     config->freq                    = FREQ_40;
 
+
+    // All DACs 
     config->dacs.named.Ibias_Preamp_ON       = 32;
     config->dacs.named.Ibias_Preamp_OFF      = 8;
     config->dacs.named.VPReamp_NCAS          = 128;
@@ -48,6 +49,8 @@ configure(katherine_config_t *config)
     config->dacs.named.Vthreshold_coarse     = 7;
     config->dacs.named.Ibias_DiscS1_ON       = 32;
     config->dacs.named.Ibias_DiscS1_OFF      = 8;
+    // BandGap_output 0
+    // Ibias_dac 0
     config->dacs.named.Ibias_DiscS2_ON       = 32;
     config->dacs.named.Ibias_DiscS2_OFF      = 8;
     config->dacs.named.Ibias_PixelDAC        = 60;
@@ -57,14 +60,16 @@ configure(katherine_config_t *config)
     config->dacs.named.VTP_fine              = 0;
     config->dacs.named.Ibias_CP_PLL          = 128;
     config->dacs.named.PLL_Vcntrl            = 128;
+    // BandGap_temp 0
+    // Ibias_dac_cas 0
 
-    printf("WARNING: No Pixel Config\n");
-    // int res = katherine_px_config_load_bmc_file(&config->pixel_config, "chipconfig.bmc");
-    // if (res != 0) {
-    //     printf("Cannot load pixel configuration. Does the file exist?\n");
-    //     printf("Reason: %s\n", strerror(res));
-    //     exit(1);
-    // }
+    int res = katherine_px_config_load_bmc_file(&config->pixel_config, "chipconfig.bmc");
+    if (res != 0) {
+        printf("Cannot load pixel configuration. Does the file exist?\n");
+        printf("Reason: %s\n", strerror(res));
+        exit(1);
+    }
+    printf("Loaded Pixel Config");
 }
 
 static uint64_t n_hits;
@@ -76,6 +81,12 @@ frame_started(void *user_ctx, int frame_idx)
 
     fprintf(fp,"Started frame %d.\n", frame_idx);
     fprintf(fp,"X\tY\tToA\tfToA\tToT\n");
+}
+
+void getHardPixInfo(katherine_device_t* device){
+    katherine_readout_status_t status;
+    katherine_get_readout_status(device,&status);
+    printf("hw_type: %i\nhw_revision: %i\nhw_serial_number: %i\nfw_version: %i\n",status.fw_version,status.hw_revision,status.hw_serial_number,status.fw_version);
 }
 
 void
@@ -190,6 +201,7 @@ main(int argc, char *argv[])
     }
 
     print_chip_id(&device);
+    getHardPixInfo(&device);
 
     char filename[64];
     snprintf(filename,sizeof(filename),"output/HardPix_%ld.txt",(long)time(NULL));
@@ -201,7 +213,6 @@ main(int argc, char *argv[])
 
     run_acquisition(&device, &c);
 
-    Sleep(3000);
     katherine_device_fini(&device);
 
     fclose(fp);

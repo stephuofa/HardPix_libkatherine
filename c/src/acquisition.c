@@ -295,23 +295,23 @@ katherine_acquisition_fini(katherine_acquisition_t *acq)
                 if (kill_off_time > 0 && duration > kill_off_time) {\
                     acq->state = ACQUISITION_TIMED_OUT;\
                 }\
-		\
-		if(!acq->decode_data && acq->aborted) {		\
-		  acq->state = ACQUISITION_SUCCEEDED;\
-		}				     \
+                \
+                if(!acq->decode_data && acq->aborted) {		\
+                    acq->state = ACQUISITION_SUCCEEDED;\
+                }				     \
                 \
             }\
             \
             last_data_received = time(NULL);\
             \
-	    if(acq->decode_data) {\
-	        const char *it = acq->md_buffer;\
-                for (i = 0; i < received; i += KATHERINE_MD_SIZE, it += KATHERINE_MD_SIZE) { \
-                    handle_measurement_data_##SUFFIX(acq, (const uint64_t *) it);\
-                }\
-	    } else {\
-                acq->handlers.data_received(acq->user_ctx, acq->md_buffer, received);\
-	    }\
+            if(acq->decode_data) {\
+                const char *it = acq->md_buffer;\
+                    for (i = 0; i < received; i += KATHERINE_MD_SIZE, it += KATHERINE_MD_SIZE) { \
+                        handle_measurement_data_##SUFFIX(acq, (const uint64_t *) it);\
+                    }\
+            } else {\
+                    acq->handlers.data_received(acq->user_ctx, acq->md_buffer, received);\
+            }\
         }\
         \
         (void) katherine_udp_mutex_unlock(&acq->device->data_socket);\
