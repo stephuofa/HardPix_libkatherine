@@ -37,6 +37,79 @@ cmdNames = {
     0x32 : "InternalTDCSettings - v2"
 }
 
+valid_ports = {'1556','62510'}
+
+def process_data_packet(f,raw, msgNum):
+    if (len(raw) < 6):
+        print("Unexpected length while processing subpackets")
+
+    command = (raw[5] & 0b11110000) >> 4
+    f.write(f"\tCMD({msgNum}): 0x{command:x}\n")
+
+
+    if (len(raw) > 6):    
+        process_data_packet(f,raw[6:],msgNum+1)
+
+
+
+def filter_and_print_measurement_info(pcapng_file, target_ip):
+    # Only load layers necessary to speed up parsing
+    cap = pyshark.FileCapture(
+        pcapng_file,
+        display_filter=f"ip.addr == {target_ip}",
+        use_json=True,
+        include_raw=True
+    )
+
+    outputfile = pcapng_file[:pcapng_file.index(".")]+"_measurment_parsed.txt"
+    with open(outputfile, "w" ,encoding='utf-8') as f:
+        packetCounts = {}
+        for packet in cap:
+            try:
+                # check if its a data packet
+                if not hasattr(packet,'data'):
+                    continue
+
+                # check that its coming from the data port
+                port = packet.udp.srcport
+                if port not in valid_ports:
+                    continue
+                
+                
+                raw = bytes.fromhex(packet.data.data.replace(':', ''))
+                if(len(raw)<6):
+                    print("Unexpected length")
+                    print(f"Payload (hex): {' '.join(f'{b:02x}' for b in raw)}\n")
+                    print("")
+                    continue
+                             
+                command = (raw[5] & 0b11110000) >> 4
+            
+                f.write(f"Packet #{packet.number}\n")
+                f.write(f"From port: {port}\n")
+                f.write(f"Length: {len(raw)} -> num msgs = {(len(raw)/6)}\n")
+                f.write("\tCMD(1): 0x%x\n" % command)
+
+                if(len(raw)>6):
+                    process_data_packet(f,raw[6:],2)
+                
+
+                f.write("-" * 50)
+                f.write("\n")
+                f.flush()
+            except AttributeError as e:
+                print(f"ERROR: {e}")
+                continue
+        
+        for k,v in packetCounts.items():
+            commandDescription = "Unknown"
+            if k in cmdNames:
+                commandDescription = cmdNames[k]
+            f.write("CMD: 0x%02x (%-35s) - %5i usages\n" % (k, commandDescription, v/2)) # /2 for cmd-rsp pairs
+
+        f.flush()
+        cap.close()
+
 def filter_and_print_data(pcapng_file, target_ip):
     # Only load layers necessary to speed up parsing
     cap = pyshark.FileCapture(
@@ -102,4 +175,5 @@ def filter_and_print_data(pcapng_file, target_ip):
         cap.close()
 
 # Example usage
-filter_and_print_data('wireshark_tracklab.pcapng', '192.168.1.3')
+# filter_and_print_data('wireshark_tracklab.pcapng', '192.168.1.3')
+filter_and_print_measurement_info('wireshark_manual_2.pcapng', '192.168.1.3')
