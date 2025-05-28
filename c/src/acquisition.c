@@ -300,6 +300,7 @@ katherine_acquisition_fini(katherine_acquisition_t *acq)
                     acq->state = ACQUISITION_SUCCEEDED;\
                 }				     \
                 \
+                continue;\
             }\
             \
             last_data_received = time(NULL);\
