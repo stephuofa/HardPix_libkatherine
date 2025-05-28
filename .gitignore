@@ -3,6 +3,7 @@ build/
 *.pdb
 *.obj
 output/
+input/
 
 
 # Created by https://www.gitignore.io/api/clion,cmake
